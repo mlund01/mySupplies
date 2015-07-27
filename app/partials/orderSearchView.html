@@ -18,7 +18,10 @@
             <div class="panel-body">
                 <ul>
                     <li ng-repeat="criteria in OrderSearchCriteria | filter:{Type:'Standard'}" ng-show="criteria.Count">
-                        <a ng-href="#" ng-click="OrderSearch($event,{{criteria}})">{{criteria.DisplayName | r | xlat}} <span class="badge">{{criteria.Count}}</span></a>
+                        <!--TRT-00505-->
+                        <a ng-if="criteria.Status == 'Open'" ng-href="#" ng-click="OrderSearch($event,{{criteria}})">{{'Open Orders' | r | xlat}} <span class="badge">{{criteria.Count}}</span></a>
+                        <a ng-if="criteria.Status != 'Open'" ng-href="#" ng-click="OrderSearch($event,{{criteria}})">{{criteria.DisplayName | r | xlat}} <span class="badge">{{criteria.Count}}</span></a>
+                        <!--TRT-00505-->
                     </li>
                 </ul>
             </div>
@@ -163,7 +166,7 @@
                     {{order.Type}}
                 </div>
                 <div class="col-sm-2">
-                     <span class="visible-xs panel-table-heading-xs text-info">{{'Status' | r | xlat}}</span>
+                    <span class="visible-xs panel-table-heading-xs text-info">{{'Status' | r | xlat}}</span>
                     {{order.StatusText}}
                 </div>
                 <div class="col-sm-2">

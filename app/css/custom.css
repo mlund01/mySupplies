@@ -4,3 +4,7 @@ Theme name: My SPA Theme
 Version: 1.0
 Template: Howdy
 */
+
+#login_form form {
+    background-color: rgba(255, 255, 255, 0.55)
+}
